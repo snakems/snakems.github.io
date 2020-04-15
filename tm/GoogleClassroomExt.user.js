@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google Classroom Extended
 // @namespace    https://classroom.google.com/
-// @version      0.3
+// @version      0.4
 // @description  Расширяет возможности Google Classroom
 // @author       SnakeMS
 // @match        https://classroom.google.com/u/*/*/*
@@ -81,12 +81,14 @@
             }
         },
         applyStylesForTask: () => {
+            //Нужно выполнить сегодня
             [...document.querySelectorAll("li.tfGBod")].filter(el => el.innerText.indexOf("Сегодня")!=-1).forEach((item) => {
                 item.style['background-color']="darksalmon";
             });
             [...document.querySelectorAll("li.tfGBod")].filter(el => el.innerText.match(/Срок сдачи:\s\d{2}:\d{2}/i)).forEach((item) => {
                 item.style['background-color']="darksalmon";
             });
+            //Нужно выполнить завтра
             [...document.querySelectorAll("li.tfGBod")].filter(el => el.innerText.indexOf("Завтра")!=-1).forEach((item) => {
                 item.style['background-color']="aquamarine";
             });
